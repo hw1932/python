@@ -1,0 +1,6 @@
+#取出1到9所有的奇数
+list(filter(lambda x: x%2,range(10)))
+filter（function,iterable），把iterable放入functions,返回为真的结果
+#取出所有10以内正整数的平方
+list(map(lambda x: x*x,range(10)))
+map(function,iterable),把可迭代序列的每一个元素都带入function运算

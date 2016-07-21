@@ -1,0 +1,597 @@
+十六. 序列
+n = [1,2,3,4,5,6]
+m = [4,5,6,1,2,3,8,9,0]
+
+list强转成列表,list()工厂函数，初始化一个空列表
+tuple()
+len(iterabel)
+参数是可迭代序列，序列中是纯字符或纯数字,不能混合否则报错
+max(list)
+min(iterabel)
+sum(iterabel[,start=0])
+sorted(iterabel)与list.sort()
+以下返回一个迭代期对象，用list转化				
+list(reversed(list))	反转序列,	 
+list(enumerate(list))	枚举，生成每个元素索引和元素组成的元祖列表
+list(zip(m,n))	        返回各个序列得到的元祖，长度不一样时取短
+
+
+二十. func
+1,栈内存中的全局变量，在（函数的）局部作用域中试图对其赋值或修改，会触发屏蔽（Shadowing）：在局部作用域中创建一个同名变量，以保护全局变量
+2，栈内存中的容器，则不会触发Shadowding，比如列表：x[0]=1，在局部作用域中对x[0]修改，则可以。
+3，使用关键字nonloacal 声明x不是局部变量
+4，python引用变量的顺序： 当前作用域局部变量->外层作用域变量->当前模块中的全局变量->python内置变量
+5，global关键字用来在函数或其他局部作用域中使用全局变量。但是如果不修改全局变量也可以不使用global关键字。
+nonlocal关键字用来在函数或其他作用域中使用外层(非全局)变量。
+
+二十一. lambda表达式
+#取出1到9所有的奇数
+list(filter(lambda x: x%2,range(10)))
+filter（function,iterable），把iterable放入functions,返回为真的结果
+#取出所有10以内正整数的平方
+list(map(lambda x: x*x,range(10)))
+map(function,iterable),把可迭代序列的每一个元素都带入function运算
+
+
+二十五. Dict
+1，dict4 = dict(a='1', b='2', c='3')
+关键字创建字典时，不用引号，会自动用引号包裹关键字，此方式生成的字典内键值对顺序会变化
+
+二十六. Dict
+1,dict2.fromkeys(iterable,value=none)
+dict2.fromkeys(range(10),'hello')
+
+2,dict2.get(32,'木有32这个键')
+如果有32这个键就返回他的值，没有则返回get方法的第二个参数('木有32这个键')
+
+3，in dict2，可以用in判断是否在字典中，查找的是键不是值。而在其他序列中in查找的是值不是索引号
+
+4，清空字典用clear（）,不要用空字典{}给变量重新赋值，有多个变量指向同一个字典时，这种方法原来的字典还存在
+
+5，dict2=dict1.copy()与dict2=dict1
+后者是指向同一个对象，前者创建了一个新的对象
+
+6，pop与popitem
+pop(key)根据键弹，popitem随机弹
+
+6,dict1.setdefaults(key,value=none)
+value是可选参数，不指定则默认none
+
+7,dict1.updata（dict2）把dict2插入到dict1里
+
+二十七. 集合
+1，唯一性，无序（无法索引），
+2，创建：直接把一堆元素用花括号括起来；set()工厂函数	
+set1 = set([1,2,3,4,5,5,5,6]),
+3，list(set(list1))，去除list1中的所有重复元素，但得到的新列表，，其中的元素顺序可能不同于原列表，因为set是无序的
+4，for把集合的元素一个个读出来，支持in not in判断是否在集合中
+5，set2.add(7)，追加一个数字。set1.remove(7)
+6,num3 = frozenset([1,2,3,4,5])
+num3.add(6)报错'frozenset' object has no attribute 'add'
+
+
+二十八. 文件
+1,f = open(file,mode='r')
+2,f.read(),f.tell()返回文件指针位置，即书签位置（1汉字=2个位置，其他是1个）
+3,f.seek(offset,from)在文件中移动指针，从from（0代表文件起始位置，1代表当前位置，2代表文件末尾）偏移offset个字节
+4,list(f)
+for each_line in list(f):#效率低
+	print(each_line)
+	#下面是官方推荐
+for each_line in f:	
+	print(each_line)
+
+5，f.write(seq)seq是一个返回字符串的可迭代对象。返回文件指针的位置，关闭后才会从缓冲区写入文件，不关闭的话则不会
+
+
+二十九. 文件
+1，splite(sep=None,maxsplit=-1)默认空格切分，切分maxsplit次，-1表示最大切分
+
+
+三十. 文件系统
+1，模块：是一个包含所有已定义的函数和变量的文件，其后缀是.py。模块可以被别的程序引入，以使用该模块中的函数等功能
+2，os模块
+getcwd(),chdir*(path),
+listdir(path='.')'.'表示当前目录，'..'表示上一级目录
+,mkdir(path),创建单层目录，如果已存在则报错
+makedirs(path),'e:/a/b'与'e:/a/c'不冲突
+remove(path),
+rmdir(path)删除单层目录，目录非空则抛出异常
+removedirs(path)递归删除目录，从子目录到父目录逐层尝试删除，遇到目录非空则抛出异常
+rename(old,new)将文件old重命名为new
+system(command)运行操作系统的shell命令
+os.curdir指代当前目录('.'),用于不同操作系统
+os.pardir指代上一级目录('..')用于不同操作系统
+os.sep输出操作系统特定的路径分隔符（\\与/）
+os.linesep当前平台使用的行终止符（Win下为'\r\n',Linux下为'\n'）
+os.name指代当前使用的操作系统,包括：posix(unix),nt(windows),mac,os2,ce,java）
+
+os.path
+basename(path)去掉目录路径，返回文件名，无论是否存在
+dirname(path)去掉文件名，返回目录，无论是否存在
+join(path1[,path2[,...]])把path1,path2各部分用当前系统平台的分隔符合成一个路径名
+split(path)返回路径名，并把最后一个//后面的作为文件名返回，但是不判断，例如：os.path.splite('c:/a/b)，得到的结果是('c:/a','b')，b其实是目录
+splitext(path)分离文件名和扩展名
+getsize(file)指定文件的大小，字节
+getatime(file)指定文件的访问时间，返回浮点型秒数
+getctime(file)指定文件的创建时间
+getmtime(file)指定文件的修改时间
+time.gmtime(os.path.getatime(file_path))返回格林威志时间
+time.localtime(os.path.getatime(file_path))返回本地时间
+
+返回True或False
+exist(path)，判断是否存在
+isabs(path)是否为绝对路径
+isdir(path)路径是否存在，且是一个目录
+isfile(path)路径是否存在，且是一个文件
+islink(path)路径是否存在，且是一个符号链接，windows上代表快捷方式
+ismount(path)路径是否存在，且是一个挂载点，是否在盘符的根目录下
+samefile(path1,path2)判断path1和path2两个路径是否指向同一个文件
+
+
+三十一. 永久存储
+#coding:utf-8
+import pickle
+filepath = r'E:\PyCharm4.5_workspace\Project\Fishc\31.pickle'
+
+
+def pickle_save():
+    #my_list = [123,3,14,'小甲鱼',[123,'123']]
+    my_list = input('请输入想要保存的内容')
+    pickle_file = open(filepath,'wb')
+    pickle.dump(my_list,pickle_file)
+    pickle_file.close()
+
+def pickle_load():
+    pickle_file = open(filepath,'rb')
+    my_list2 = pickle.load(pickle_file)
+    print(my_list2)
+
+if __name__ == '__main__':
+    pickle_save()
+    pickle_load()
+
+
+三十四. else与with
+while与else:如果while全部执行完毕，else会执行。如果while因为break终止,else不会执行（for也是这样）
+
+try与else
+try:
+	int('abc')
+except ValueError as reason:
+	print('error:'+str(reason))
+else:
+	print('no error')
+
+with语句
+try:
+	f = open('data.txt','w')
+	for each_line in f:
+		print(each_line)
+except OSError as reason:
+	print('error'+str(reason))
+finally:
+	f.close()
+
+try:
+	with open('data.txt','w') as f:
+		for each_line in f:
+			print(each_line)
+except OSError as reason:
+	print('error'+str(reason))
+
+
+三十五. Easygui
+下载http://easygui.sourceforge.net，进入解压目录，python setup.py install
+easygui.py中，PROPORTIONAL_FONT_FAMILY设置字体
+root_width,root_height,设置框体大小
+help(easygui)查看所有方法
+
+
+三十六. 类和对象
+多态：不同实例对同一方法的不同响应
+
+三十七. 面向对象
+ 95+0.382=168*0.618
+实例化时，对象把自己作为第一个参数传递给self，python就知道该对象在调用方法了
+
+类的私有属性会被改变成，_类名+属性名，可以通过 对象名._类名+属性名 的方式访问
+
+
+三十八. 继承
+子类同名方法或属性会覆盖父类
+1，调用未绑定的父类方法，再次初始化子类对象，可以在子类的init方法中进行，也可以在程序执行时进行参见下列代码中if后的语句
+2，supe().__init__()方法
+
+下面的例子，鲨鱼方法因为覆盖失去了父类方法
+import random as r
+class Fish:
+	def __init__(self):
+		self.x = r.randint(0,10)
+		self.y = r.randint(0,10)
+	def move(self):
+		self.x -= 1
+		print('我的位置是：',self.x, self.y)
+
+class Goldfish(Fish):
+	pass
+
+class Carp(Fish):
+	pass
+
+class Salmon(Fish):
+	pass
+	
+class Shark(Fish):
+	def __init__(self):
+		self.hungry = True
+	def eat(self):
+		if self.hungry:
+			print('我饿了,我要吃！')
+			self.hungry = False
+		else:
+			print('吃饱啦')
+			self.hungry = True
+
+if __name__ == '__main__':
+    shark = Shark()
+    Fish.__init__(shark)
+    shark.move()
+
+多重继承：
+class Base1:
+	def foo1(self):
+		print('我是foo1，我为Base1代言。。')
+
+class Base2:
+	def foo2(self):
+		print('我是foo2，我为Base2代言。。')
+
+class C(Base1,Base2):
+	pass
+
+	
+三十九. 拾遗
+组合：
+把没有继承关系的类的实例化放到一个类里
+Mix-in
+
+修改过属性的对象，会生成对象属性覆盖类属性，因而它的类属性变化时，不会影响到该对象的属性，而未修改过属性的对象，则会随着类属性变化
+
+当属性和方法名相同，属性覆盖方法
+1，不要试图在一个类里面定义出所有能想到的特性和方法，应该利用继承和组合机制来进行扩展。
+2，用不同的词性命名，如属性名用名词，方法名用动词
+
+绑定：
+1，类中方法的默认参数self，是用来接收对象的，如果没有则对象无法调用该方法。但是类对象(比如A就是类A()的类对象），A.__dict__查看类属性，有类的全部方法，所以可以调用
+2，类中定义的属性和方法是静态的，类对象被删除，他们依然存放在内存中，只是不能实例化新的对象，但是已经实例化的对象则可以继续调用类的全部属性和方法，只有当程序停止，才会失效。尽量使用实例属性，类属性通常仅用来跟踪与类相关的一些值。
+class B:
+	def printb(a=1)#没有self参数
+		print('no zuo no die'+a)
+	def printc(self,c='c')
+		print('no zuo no die '+c)
+	def setXY(self,x,y)
+		self.x = x
+		self.y = y
+	def printXY(self):
+		print(self.x,self.y)
+b1 = B()
+b1.printc(2)，#实际上是:printc(b1,2),把b1作为参数传递给了printc()方法,其中b1给了self，2给了c，
+b1.printb(2)#报错，b1调用时出错，‘不需要位置参数’,这个位置参数就是self
+B.printb(2)#正常，B是类对象,没有参数传递给self，可以正常调用
+b1.setXY(4,5)#实际上是把self,4,5这三个参数传递给了setXY方法，b1给了self，4，5分别传递给x,y。x,y再把值传给self.x,self.y，也就是dd.x,dd.y。这2个属性是只属于在b1对象上的，这就是self的作用
+del B#删除类实例
+b1.printc()#可以调用
+b2 = B()，#不可以，报错，找不到类对象
+
+
+
+四十.
+issubclass(class,classinfo)
+1，一个类会被认为是自身的子类
+2，classinfo可以是类对象组成的元祖，只要class是其中任何一个候选类的子类，则返回True
+
+isinstance(object,classinfo)
+检查一个实例对象是否属于某个类
+1,如果第一个参数不是对象，则永远返回False
+2,如果第二个参数不是类或者由类对象组成的元组，会抛出一个TypeError异常
+3,第二个参数如果是第一个参数的类的父类，也返回True
+
+hasattr(objcet,name)
+测试一个参数是否有指定的属性，属性名带引号。否则引发Nameerror的异常
+
+getattr(object,name[,default])
+获得属性值。没有该属性，返回AttributError，如果有第三个参数则返回第三个参数
+
+setattr(object,name,value)
+为对象的属性赋值，如果没有该属性，则创建该属性。name要加引号
+
+delattr(object,name[,default])
+删除属性，不存在则抛出异常AttributeError
+
+
+property(fget=None, fset=None, fdel=None, doc=None)
+作用:用户只调用c1.x进行增删改查就可以，不用关注里面的方法如何变化
+
+class C:
+	def __init__(self,size=10):
+		self.size = size
+	def getSize(self):
+		return self.size
+	def setSize(self,value):
+		self.size = value
+	def delSize(self):
+		del self.size
+	x = property(getSize, setSize, delSize)
+	
+>>>c1 = C()
+>>>c1.getSize()
+10
+>>>c1.x
+10
+>>>c1.x = 18
+>>>c1.x
+18
+>>>c1.size
+18
+>>>c1.getSize()
+18
+>>>del c1.x
+>>>c1.size
+AttributeError,'c' object has no attribute 'size'
+
+
+
+四十一. 构造和析构
+class Rectangle:
+	def __init__(self,x,y):
+		self.x = x
+		self.y = y
+		return None
+	def getPeri(self):
+		return(self.x + self.y) * 2
+	def getArea(self):
+		return self.x * self.y
+
+rect = Rectangle(3,4)
+rect.getPeri()
+rect.getArea()
+
+__new__先于__init__被调用
+__new__(cls[,...])
+第一个参数是类，返回cls类的对象，其后面的参数传给__init__()方法
+class CapStr(str):
+	def __new__(cls, string):
+		string = string.upper()
+		retrun str.__new__(cls,string)
+
+>>>a = CapStr('I love u')
+>>>a
+'I love u'
+
+__del__(self)析构器
+del x 不等效于 x.__del__，__del__方法试用于python的垃圾回收机制：没有任何变量引用时会被释放，见下面的例子
+
+class C:
+	def __init__(self):
+		print('我是init方法我被调用了')
+	def __del__(self):
+		print('我是__del__方法，我被调用了')
+
+>>>c1 = C()
+我是init方法我被调用了
+>>>c2 = c1
+>>>c3 = c2
+>>>del c3
+>>>del c2
+>>>del c1
+我是__del__，我被调用了
+
+
+
+四十二. 算数运算
+>>>type(len)
+<class 'builtin_function_or_method'>
+>>>type(dir)
+<class 'builtin_function_or_method'>
+>>>type(int)
+<class 'type'>
+>>>type(list)
+<class 'type'>
+>>>class C:
+	pass
+>>>type(C)#C是类C的类对象
+<class 'type'>
+以上可以得出，所谓工厂函数就是类对象
+
+>>>a = int('123')
+原来的含义：调用int()函数，把‘123’转换成int型
+现在的含义：实例化一个int对象，返回一个实例化过的对象，传入的参数是‘123’
+注意：这里，int是类名，不是方法名
+
+>>>b = int('456')
+>>>a+b
+579
+以上说明，对象是可以进行运算的,对象的运算是靠__开头的内置函数进行的，参见下例：
+class New_int(int):
+	def __add__(self,other):
+		return int.__sub__(self,other)
+	def __sub__(self,other):
+		return int.__add__(self,other)
+>>>a = New_int(3)
+>>>b = New_int(5)
+>>>a + b
+-2
+class Try_int(int):
+	def __add__(self, other):
+		return self + other
+	def __sub__(self, other):
+		return self - other
+>>>a = Try_int(3)
+>>>b = Try_int(5)
+>>>a + b
+self是a，other是b，return self+other再次调用__add__方法，会进入无限递归，可以return int(self)+int(other)解决此问题
+
+
+四十三. 算数运算2
+私有方法(__开头的方法)，可以按需重写，如下：
+class int(int):
+	def __add__(self,other):
+		return int.__sub__(self,other)
+>>>a= int('5')
+>>>b = int('3')
+>>>a+b
+2
+
+a的加法操作没有实现或者不支持时，就会实现b的加法反运算
+class Nint(int):
+	def __radd__(self,other):
+		return int.__sub__(self,other)
+>>>a = Nint(5)
+>>>b = Nint(3)
+>>>a+b
+8
+>>>1+b 
+2
+1找不到__add__方法，就会找b的__radd__方法，触发了__radd(b,1)__，之后return int.__sub__(3,1)，（sub是减法方法）3-1得到2
+
+减法和除法、移位的反运算，要注意操作数的先后顺序,如下
+class Nint(int):
+	def __rsub__(self,other):
+		return int.__sub__(self,other)
+>>>b = Nint(3)
+>>>1 - b 
+2
+因为1找不到add方法，调用了b的radd方法，self是b，other是1,3-1=2，因而结果是2，不是我们想要的-2
+
+增量运算：a=a+b <=> a+=b
+一元操作符，+，-，abs()，__invert__(self)按位取反
+
+
+四十四. 简单定制
+定制一个计时器的类
+#coding:utf-8
+import time as t
+
+class MyTimer():
+    '''
+	仅计算秒
+    self.status表示计时状态标志，0未开始，1开始，2结束,
+    self.begin开始计时的时间，self.end计时结束的时间，self.t表示end-begin
+    '''
+    def __init__(self):
+        self.status = 0
+        self.t = 0
+        self.begin = 0  #159 9389 8892
+        self.end = 0
+    def __str__(self):#print(t)的结果
+        if self.status == 0:
+            print ('未开始计时')
+        elif self.status == 1:
+             '计时中...'
+        elif self.status == 2:
+            print( '总共运行了%s秒' %self.t)
+    def __repr__(self):#直接输出t的结果
+        if self.status == 0:
+            return '未开始计时'
+        elif self.status == 1:
+            return '计时中...'
+        elif self.status == 2:
+            return '总共运行了%s秒' %self.t
+    #开始计时
+    def start(self):
+        if self.status == 0:
+            self.status = 1
+            print('计时开始...')
+            self.begin = t.localtime().tm_sec
+        elif self.status == 1:
+            print('请先调用stop()停止计时')
+    #停止计时
+    def stop(self):
+        if self.status == 0:
+            print('请先调用start()开始计时！')
+        elif self.status == 1:
+            self.end = t.localtime().tm_sec
+            self.t = self.end - self.begin
+            print('成功调用stop()方法，计时结束')
+            #改变计时器状态
+            self.status = 2
+            #为下一轮计时初始化变量
+            self.begin = 0
+            self.end = 0
+        elif self.status == 2:
+            print('请先调用start()方法开始计时')
+    def __add__(self, other):
+        return int.__add__(self.t, other.t)
+
+class Mytimer2():
+    '''
+    定义了一个计时器，年月日时分秒，并有add方法，可以把2次计时结果相加
+    '''
+    def __init__(self):
+        self.begin = 0
+        self.end = 0
+        self.unit = ['年','月','日','时','分','秒']
+        self.lasted = []
+        self.prompt = '未开始计时'
+    def __str__(self):
+        return self.prompt
+    __repr__ = __str__
+    def __add__(self, other):
+        add_last = []#两次时间之和存储在这个空列表中
+        prompt = '2次总共运行了'
+        for index in range(6):
+            add_last.append(self.lasted[index] + other.lasted[index])
+            if add_last[index]:
+                prompt += (str(add_last[index]) + self.unit[index])
+        print(prompt)
+    def start(self):
+        if not self.begin:
+            self.begin = t.localtime()
+            self.prompt = '计时中，请先调用stop()停止计时'
+            print('开始计时')
+        elif self.begin:
+            print('请先调用stop()停止计时')
+    def stop(self):
+        if self.begin:
+            self.end = t.localtime()
+            self.__calc2()
+            print('计时结束')
+            #为下一轮计时初始化变量
+            self.begin = 0
+            self.end = 0
+        elif not self.begin:
+            print('请先调用start()进行计时')
+    def __calc(self):
+        self.prompt = '总共运行了'
+        self.lasted = []
+        for index in range(6):
+            self.lasted.append(self.end[index] - self.begin[index])
+            if self.lasted[index]:
+                self.prompt += (str(self.lasted[index]) + self.unit[index])
+    def __calc2(self):#__calc中begin-end方法可能是负，下面是完善
+        self.prompt = '总共运行了'
+        self.lasted = []
+        for index in range(6):
+            self.lasted.append(self.end[index] - self.begin[index])
+            if self.lasted[index] < 0:
+                if index == 1:#月为负时
+                    self.lasted[index-1] -= 1#年减1
+                    self.lasted[index] += 12#月加12
+                elif index == 2:#日为负时
+                    self.lasted[index-1] -= 1#月减1
+                    self.lasted[index] += 30#日加30，不再区分某个月，太繁琐
+                elif index == 3:#小时为负时
+                    self.lasted[index-1] -= 1#日减1
+                    self.lasted[index] += 24#小时加24
+                elif index == 4:#分为负时
+                    self.lasted[index-1] -= 1#小时减1
+                    self.lasted[index] += 60#分加60
+                elif index == 5:#小时为负时
+                    self.lasted[index-1] -= 1#分减1
+                    self.lasted[index] += 60#秒加60
+                self.prompt += (str(self.lasted[index]) + self.unit[index])
+            elif self.lasted[index]>0:
+                self.prompt += (str(self.lasted[index]) + self.unit[index])
+				
+				
