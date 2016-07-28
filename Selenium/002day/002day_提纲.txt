@@ -1,0 +1,20 @@
+1，什么是 Selenium？
+
+2，Selenium 的特点：
+
+3，Selenium 版本
+
+4，Selenium IDE
+使用场景
+
+5，Selenium Grid
+
+6，Selenium RC
+Selenium RC 分为Client Libraries 和 Selenium Server
+Selenium Server：Launcher、Http Proxy、 Core。 
+
+7，Selenium 2.0
+Selenium 2.0 = Selenium 1.0 + WebDriver
+
+8，WebDriver 
+Selenium 与 WebDriver 合并原因

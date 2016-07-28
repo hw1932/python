@@ -1,0 +1,268 @@
+1，单个元素定位
+webdriver 提供了八种元素定位方法：
+ id
+ name
+ class name
+ tag name
+ link text
+ partial link text
+ xpath
+ css selector
+在 Python 语言中对应的定位方法如下：
+find_element_by_id()
+find_element_by_name()
+find_element_by_class_name()
+find_element_by_tag_name()
+find_element_by_link_text()
+find_element_by_partial_link_text()
+find_element_by_xpath()
+find_element_by_css_selector()
+
+2，分析网页元素
+（1）它们由标签对组成：
+<html></html>
+<body></body>
+<div></div>
+<form></form>
+html、div 就是标签的标签名。
+
+（2）标签各种属性属性：
+<div id="head" class="s_down">
+<from class="well">
+<input id="kw" name="wd" class="s_ipt">
+就像人一样也会有各种属性，身份证号（id）、姓名（name）、职业（class）等。
+
+（3）标签对之间可以有文本数据。
+<a>新闻</a>
+<a>hao123</a>
+<a>地图</a>
+
+（4）标签有由层级关系
+<html>
+	<body>
+	</body>
+</html>
+<div>
+	<from>
+		<input />
+	</from>
+<div>
+对于上面结构，如果把 input 看作是子标签，那么 form 就是它的父标签。
+理解了上面这些特性是学习定位方法的基础。以百度输入框和百度搜索按钮为例来学习不同的定
+位方法，两个元素的代码如下。
+
+<input id="kw" class="s_ipt" autocomplete="off" maxlength="100" value=""
+name="wd">
+
+<input id="su" class="bg s_btn" type="submit" value="百度一下">
+
+3，以百度输入框为例，实际动手写6种定位方式的代码
+find_element_by_id("kw").send_keys('Selenium')
+find_element_by_id("su").click()
+
+find_element_by_name("wd").send_keys('Selenium')
+
+find_element_by_class_name("s_ipt").send_keys('Selenium')
+find_element_by_class_name("bg s_btn").click()
+
+find_element_by_tag_name("input").send_keys('Selenium')
+find_element_by_tag_name("input").click()
+
+find_element_by_link_text("新闻").click()
+find_element_by_link_text("hao123").click()
+find_element_by_link_text("地图").click()
+find_element_by_link_text("视频").click()
+find_element_by_link_text("贴吧").click()
+
+find_element_by_partial_link_text("新").click()
+find_element_by_partial_link_text("hao12").click()
+find_element_by_partial_link_text("地图").click()
+find_element_by_partial_link_text("视频").click()
+find_element_by_partial_link_text("贴吧").click()
+
+4,XPath定位
+XPath 是一种在 XML 文档中定位元素的语言。 因为 HTML 可以看做 XML 的一种实现， 所以 selenium用户可使用这种强大语言在 web 应用中定位元素。
+
+1) 绝对路径定位：
+XPath 有多种定位策略，最简单和直观的就是写元素的绝对路径。如果仍然把一个元素看做一个人的
+话，那么现在有一个人，他没有任何属性特征，那么这个人一定会存在于某个地理位置，如：xx 省 xx 市
+xx 区 xx 路 xx 号。那么对于一个元素在一个页面当中也会有这样的一个绝对地址。
+参考 baidu.html 前端工具所展示的代码，我们可以用下面的方式来找到百度输入框和搜索按钮。
+find_element_by_xpath("/html/body/div/div[2]/div/div/div/from/span/input")
+find_element_by_xpath("/html/body/div/div[2]/div/div/div/from/span[2]/input")
+find_element_by_xpath()方法用于 XPath 语言定位元素。XPath 的绝对路径主要用标签名的层级关系来
+定位元素的绝对路径。最外层为 html 语言，body 文本内，一级一级往下查找，如果一个层级下有多个相
+同的标签名，那么就按上下顺序确定是第几个，div[2]表示第二个 div 标签。
+
+2) 利用元素属性定位：
+除了使用绝对路径的以外，XPath 也可以使用使素的属性值来定位。同样以百度输入框和搜索按钮为
+例了：
+find_element_by_xpath("//input[@id='kw']")
+find_element_by_xpath("//input[@id='su']")
+//表示当前页面某个目录下，input 表示定位元素的标签名，[@id='kw'] 表示这个元素的 id 属性值等于
+kw。
+下面通过 name 和 class 属性值来定位。
+find_element_by_xpath("//input[@id='wd']")
+find_element_by_xpath("//input[@class='s_ipt']")
+find_element_by_xpath("//*[@class='bg s_btn']")
+
+如果不想指定标签名也可以用星号（*）代替。当然，使用 XPath 不仅仅只局限在 id、name 和 class 这
+三个属性值，元素的任意属性值都可以使用，只要它能唯一的标识一个元素。
+find_element_by_xpath("//input[@maxlength='100']")
+find_element_by_xpath("//input[@autocomplete='off']")
+find_element_by_xpath("//input[@type='submit']")
+
+3) 层级与属性结合：
+如果一个元素本身并没有可以唯一标识这个元素的属性值，我们可以找其上一级元素，如果它的上级
+有可以唯一标识属性的值，也可以拿来使用。参考 baidu.html 文本。
+……
+<form id="form" class="fm" action="/s" name="f">
+<input type="hidden" value="utf-8" name="ie">
+<input type="hidden" value="8" name="f">
+<input type="hidden" value="1" name="rsv_bp">
+<input type="hidden" value="1" name="rsv_idx">
+<input typ e="hidden" value="" name="ch">
+<input type="hidden" value="02.." name="tn">
+<input type="hidden" value="" name="bar">
+<span class="bg s_ipt_wr">
+<input id="kw" class="s_ipt" autocomplete="off"
+maxlength="100" value="" name="wd">
+</span>
+<span class="bg s_btn_wr">
+<input id="su" class="bg s_btn" type="submit"
+value="百度一下">
+</span>
+……
+假如百度输入框本身没有可利用的属性值，我们可以查找它的上一级属性。比如，“小明”刚出生的
+时候没有名字，没上户口（没身份证号），那么亲朋好友来找“小明”可以先到小明的爸爸，因为他爸爸
+是有很多属性特征的，找到了小明的爸爸，抱在怀里的一定就是小明了。通过 XPath 描述如下：
+
+find_element_by_xpath("//span[@class='bg s_ipt_wr']/input")
+find_element_by_xpath("//span[@class='bg s_btn_wr']/input")
+span[@class='bg s_ipt_wr'] 通过 class 属性定位到是父元素，后面/input 也就表示父元素下面标签名为
+input 的子元素。如果父元素没有可利用的属性值，那么可以继续向上查找“爷爷”元素。
+find_element_by_xpath("//form[@id='form']/span/input")
+find_element_by_xpath("//form[@id='form']/span[2]/input")
+我们可以通过这种方法一级一级的向上打找，直到找到最外层的<html>标签，那么就是一个绝对路径
+的写法了。
+
+4) 使用逻辑运算符
+如果一个属性不能唯一的区分一个元素，我们还可以使用逻辑运算符连接多个属性来区别于其它属
+性。
+……
+<input id="kw" class="su" name="ie">
+<input id="kw" class="aa" name="ie">
+<input id="bb" class="su" name="ie">
+……
+如上面的三行元素，假如我们现在要定位第一行元素，如果使用 id 将会与第二行元素重名，如果使用
+class 将会与第三行元素的重名。那么如果同时使用 id 和 class 就会唯一的标识这个元素。那么这个时候就
+可以通过逻辑运算符号连接。
+find_element_by_xpath("//input[@id='kw' and @class='su']/span/input")
+当然，我们也可以用 and 连接更多的属性来唯一的标识一个元素。
+
+5) 工具
+Firebug 前端调试工具和 FirePath 插件可以方便的辅助 XPath 语法。
+打开 FireFox 浏览器的 FireBug 插件，点击插件左上角的鼠标箭头，再点击页面上需要定位的元素，在元
+素行上右键弹出快捷菜单，选择“复制 XPath”，将会获得当前元素的 XPath 语法
+
+
+
+5,css_selector
+CSS(Cascading Style Sheets)是一种语言，它被用来描述 HTML 和 XML 文档的表现。CSS 使用选择器
+来为页面元素绑定属性。这些选择器可以被 selenium 用作另外的定位策略。
+
+CSS 选择器的常见语法：
+选择器 						例子 				描述
+.class 						.intro 				class 选择器，选择 class="intro"的所有元素
+#id 						#firstname			id 选择器，选择所有 id= " firstname " 所有元素
+* 							* 					选择所有元素
+element 					p 					元素所有<p>元素
+element > element 			div > input 		选择父元素为 <div> 元素的所有 <input> 元素
+element + element 			div + input 		选择紧接在 <div> 元素之后的所有 <p> 元素。
+[attribute=value] 			[target=_blank] 	选择 target="_blank" 的所有元素。
+
+以百度输入框和搜索按钮为例
+……
+<span class="bg s_ipt_wr">
+<input id="kw" class="s_ipt" autocomplete="off"
+maxlength="100" value="" name="wd">
+</span>
+<span class="bg s_btn_wr">
+<input id="su" class="bg s_btn" type="submit"
+value="百度一下">
+</span>
+……
+1) 通过 class  属性定位：
+find_element_by_css_selector(".s_ipt")
+find_element_by_css_selector(".bg s_btn")
+find_element_by_css_selector()方法用于 CSS 语言定位元素，点号（.）表示通过 class 属性来定位元素。
+通过 id  属性定位：
+find_element_by_css_selector("#kw")
+find_element_by_css_selector("#su")
+井号（#）表示通过 id 属性来定位元素。
+
+2) 通过标签名定位：
+find_element_by_css_selector("input")
+在 CSS 语言中用标签名定位元素不需要任何符号标识，直接使用标签名即可，但我们前面已经了解到
+标签名重复的概率非常大，所以通过这种方式很难唯一的标识一个元素。
+
+3) 通过父子关系定位：
+find_element_by_css_selector("span>input")
+上面的写法表示有父亲元素，它的标签名叫 span，查找它的所有标签名叫 input 的子元素。
+
+4) 通过属性定位：
+find_element_by_css_selector("input[autocomplete='off']")
+find_element_by_css_selector("input[maxlength='100']")
+find_element_by_css_selector("input[type='submit']")
+在 CSS 当中也可以使用元素的任意属性，只要这些属性可以唯一的标识这个元素。
+
+5) 组合定位：
+我们当然可以把上面的定位策略组合起来使用，这样就大大加强了元素的唯一性。
+find_element_by_css_selector("span.bg s_ipt_wr>input.s_ipt")
+find_element_by_css_selector("span.bg s_btn_wr>input#su")
+有一个父元素，它的标签名叫 span，它有一个 class 属性值叫 bg s_ipt_wr，它有一个子元素，标签名
+叫 input，并且这个子元素的 class 属性值叫 s_ipt。好吧！我们要找的就是具有这么多特征的一个子元素。
+
+6) 工具
+通过 Firebug 定位元素，在元素上右键点击选择“复制 CSS”。
+
+
+6，XPath 与 CSS 的类似功能的简单对比
+定位方式 		XPath 								CSS
+标签 			//div 								div
+By id 			//div[@id='eleid'] 					div#eleid
+By class 		//div[@class='eleclass'] 			div#eleid
+By 属性 		//div[@title='Move mouse here']		div[title=Move mouse here]
+													div[title^=Move]
+													div[title$=here]
+													div[title*=mouse]
+定位子元素		//div[@id='eleid']/*				div#eleid >h1
+				//div/h1							div#eleid>*
+
+
+7，用 By 定位元素
+有时需要使用定位方法，在具体通过哪种定位方式（id 或 name）根据实际场景而定位，By 就可以设
+置定位策略。
+find_element()方法只用于定位元素。它需要两个参数，第一个参数是定位方式，这个由 By 提供；另
+第二个参数是定位的值。在使用 By 时需要将 By 类导入。
+from selenium.webdriver.common.by import By	
+
+find_element(By.ID,"kw")
+find_element(By.NAME,"wd")
+find_element(By.CLASS_NAME,"s_ipt")
+find_element(By.TAG_NAME,"input")
+find_element(By.LINK_TEXT,u"新闻")
+find_element(By.PARTIAL_LINK_TEXT,u"新")
+find_element(By.XPATH,"//*[@class='bg s_btn']")
+find_element(By.CSS_SELECTOR,"span.bg s_btn_wr>input#su")
+
+
+8,定位一组元素,find_elements
+1)批量操作对象
+比如将页面上所有的 checkbox 都勾上
+
+2)先获取一组对象,再在这组对象中过滤出需要具体定位的一些对象。
+比如定位出页面上所有的 checkbox，然后选择最后一个
+
+3)去掉指定的勾选
+再勾选一次就可以了，pop方法			

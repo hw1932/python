@@ -1,0 +1,50 @@
+1，单个元素定位
+webdriver 提供了八种元素定位方法：
+ id
+ name
+ class name
+ tag name
+ link text
+ partial link text
+ xpath
+ css selector
+在 Python 语言中对应的定位方法如下：
+find_element_by_id()
+find_element_by_name()
+find_element_by_class_name()
+find_element_by_tag_name()
+find_element_by_link_text()
+find_element_by_partial_link_text()
+find_element_by_xpath()
+find_element_by_css_selector()
+
+2,分析网页元素
+（1）它们由标签对组成：
+
+（2）标签各种属性属性：
+
+（3）标签对之间可以有文本数据。
+
+（4）标签有由层级关系
+
+3，以百度输入框为例，实际动手写6种定位方式的代码
+
+4，XPath定位
+1) 绝对路径定位
+2) 利用元素属性定位：
+3) 层级与属性结合：
+4) 使用逻辑运算符
+5) 工具
+
+5，css_selector
+1) 通过 class  属性定位
+2) 通过标签名定位
+4) 通过属性定位
+5) 组合定位
+6) 工具
+
+6，XPath 与 CSS 的类似功能的简单对比
+
+7，用 By 定位元素
+
+

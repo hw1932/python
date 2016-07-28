@@ -1,0 +1,52 @@
+﻿1，使用元素等待的原因
+如今大多数的web应用程序使用AJAX技术当浏览器在加载页面时，页面内的元素可能并不是同时被加载完成的，这给元素的定位添加困难。如果因为在加载某个素时延迟造成ElementNotVisibleException 的情况出现，那么就会降低的自动化脚本的稳定性。
+
+2，元素等待的类型
+WebDriver 提供了两种类型的等待：显式等待和隐式等待。
+
+3，显式等待 WebDriverWait()
+它是由 webdirver 提供的等待方法。在设置时间内，默认每隔一段时间检测一次当前页面元素是否存
+在，如果超过设置时间检测不到则抛出异常。具体格式如下：
+WebDriverWait(driver, timeout, poll_frequency=0.5, ignored_exceptions=None)
+
+driver - WebDriver 的驱动程序（Ie， Firefox，Chrome 等）
+timeout - 最长超时时间，默认以秒为单位
+poll_frequency - 休眠时间的间隔（步长）时间，默认为 0.5 秒
+ignored_exceptions - 超时后的异常信息，默认情况下抛 NoSuchElementException 异常。
+
+until()
+WebDriverWait()一般由 until()（或 until_not()）方法配合使用，下面是 until()和 until_not()方法的说明。
+until(method, message=’ ’)
+调用该方法提供的驱动程序作为一个参数，直到返回值为 Ture。
+until_not(method, message=’ ’)
+调用该方法提供的驱动程序作为一个参数，直到返回值为 False。
+
+Expected Conditions
+在本例中， 我们在使用 expected_conditions 类时对其时行了重命名， 通过 as 关键字对其重命名为 EC，
+并调用 presence_of_element_located()判断元素是否存在。
+
+expected_conditions 类提供一些预期条件的实现。
+title_is 用于判断标题是否 xx。
+title_contains 用于判断标题是否包含 xx 信息。
+presence_of_element_located 元素是否存在。
+visibility_of_element_located 元素是否可见。
+visibility_of 是否可见
+presence_of_all_elements_located 判断一组元素的是否存在
+text_to_be_present_in_element 判断元素是否有 xx 文本信息
+text_to_be_present_in_element_value 判断元素值是否有 xx 文本信息
+frame_to_be_available_and_switch_to_it 表单是否可用，并切换到该表单。
+invisibility_of_element_located 判断元素是否隐藏
+element_to_be_clickable 判断元素是否点击，它处于可见和启动状态
+staleness_of 等到一个元素不再是依附于 DOM。
+element_to_be_selected 被选中的元素。
+element_located_to_be_selected 一个期望的元素位于被选中。
+element_selection_state_to_be 一个期望检查如果给定的元素被选中。
+element_located_selection_state_to_be 期望找到一个元素并检查是否选择状态
+alert_is_present 预期一个警告信息
+
+4,隐式等待
+隐式等待是通过一定的时长等待页面所元素加载完成。哪果超出了设置的时长元素还没有被加载则抛出NoSuchElementException 异常。WebDriver 提供了 implicitly_wait()方法来实现隐式等待，默认设置为 0。它
+的用法相对来说要简单的多。
+
+5,休眠方法
+有时间我们希望脚本执行到某一位置时做固定时间的休眠，尤其是在脚本调试的过程中。那么可以使用 sleep()方法，需要说明的是 sleep()由 Python 的 time 模块提供。

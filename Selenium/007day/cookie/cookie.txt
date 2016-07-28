@@ -1,0 +1,19 @@
+﻿1，cookies概述
+有时候我们需要验证浏览器中是否存在某个 cookie，因为基于真实的 cookie 的测试是无法通过白盒和
+集成测试完成的。WebDriver 提供了操作 Cookie 的相关方法可以读取、添加和删除 cookie 信息。
+
+2，cookies方法
+ webdriver 操作 cookie 的方法有：
+ get_cookies() 				获得所有 cookie 信息
+ get_cookie(name) 			返回有特定 name 值有 cookie 信息
+ add_cookie(cookie_dict) 	添加 cookie，必须有 name 和 value 值
+ delete_cookie(name) 		删除特定(部分)的 cookie 信息
+ delete_all_cookies() 		删除所有 cookie 信息
+
+3，示例一
+ cookie.py展示通过 get_cookies()来获取当前浏览器的 cookie 信息。
+ 通过打印结果可以看出，cookie 是以字典的形式进行存放的，知道了 cookie 的存放形式，
+可以按照这种形式向浏览器中写入 cookie 信息参见示例2
+
+3，示例二
+cookie_oper

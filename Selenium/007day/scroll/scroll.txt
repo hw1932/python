@@ -1,0 +1,23 @@
+﻿1,滚动条的适用场景
+有时候我们需要控制页面滚动条上的滚动条，但滚动条并非页面上的元素，这个时候就需要借助 js 来进行操作。
+
+一般用到操作滚动条的会两个场景：
+①注册时的法律条文需要阅读，判断用户是否阅读的标准是：滚动条是否拉到最下方。
+
+②要操作的页面元素不在吸视范围，无法进行操作，需要拖动滚动条
+
+2 用于标识滚动条位置的代码
+<body onload= "document.body.scrollTop=0 ">
+<body onload= "document.body.scrollTop=100000 ">
+
+3 设置方法
+如果滚动条在最上方的话，scrollTop=0 ，那么要想使用滚动条在最可下方，可以scrollTop=100000 ，这样就可以使滚动条在最下方。
+
+4 场景实例一
+法律条款是一个内嵌窗口，通过 firebug 工具可以定位到内嵌
+入窗口可以定位到元素的 id ，可以通过下面的代码实现。
+js="var q=document.getElementById('id').scrollTop=10000"
+driver.execute_script(js)
+
+5 场景实例二
+scroll.py

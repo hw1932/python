@@ -1,0 +1,63 @@
+1，什么是 Selenium？
+Selenium 自动化测试工具，它主要是用于 Web 应用程序的自动化测试，但并不只局限于此，它还支
+持所有基于 web 的管理任务自动化。
+
+2，Selenium 的特点：
+ 开源，免费
+ 多浏览器支持：FireFox、Chrome、IE、Opera
+ 多平台支持：linux 、windows、MAC
+ 多语言支持：java、Python、Ruby、php、C#、JavaScript
+ 对 web 页面有良好的支持
+ 简单（API 简单）、灵活（用开发语言驱动）
+ 支持分布式测试用例执行
+ 
+3，Selenium 经历了两个版本，Selenium 1.0 和 Selenium 2.0 ，Selenium 也不是简单一个工具，而
+是由几个工具组成，每个工具都有其特点和应用场景。
+
+4，Selenium IDE
+Selenium IDE 是嵌入到 Firefox 浏览器中的一个插件，实现简单的浏览器操作的录制与回放功能。
+
+使用场景
+快速的创建 bug 重现脚本，在测试人员的测试过程中，发现了 bug 之后可以通过 IDE 将重现的步骤录
+制下来，以帮助开发人员更容易的重现 bug。
+
+5，Selenium Grid
+Selenium Grid 是一种自动化的测试辅助工具， Grid 通过利用现有的计算机基础设施， 能加快 Web-app
+的功能测试。 利用 Grid， 可以很方便地同时在多台机器上和异构环境中并行运行多个测试事例。 其特点为：
+ 并行执行
+ 通过一个主机统一控制用例在不同环境、不同浏览器下运行。
+ 灵活添加变动测试机
+ 
+6，Selenium RC
+Selenium RC 是 Selenium 家族的核心工具，Selenium RC 支持多种不同的语言编写自动化测试脚本，
+通过 Selenium RC 的服务器作为代理服务器去访问应用从而达到测试的目的。
+
+Selenium RC 使用分 Client Libraries 和 Selenium Server，Client Libraries 库主要主要用于编
+写测试脚本，用来控制 Selenium Server 的库。
+
+Selenium Server 负责控制浏览器行为，总的来说，Selenium Server 主要包括 3 个部分：Launcher、
+Http Proxy、 Core。 其中 Selenium Core 是被 Selenium Server 嵌入到浏览器页面中的。 其实 Selenium Core
+就是一堆 JS 函数的集合，就是通过这些 JS 函数，我们才可以实现用程序对浏览器进行操作。Launcher 用
+于启动浏览器，把 selnium Core 加载到浏览器页面当中，并把浏览器的代理设置为 Selenium Server 的
+Http Proxy。
+
+7，Selenium 2.0
+搞清了 Selenium 1.0 的家族关系，Selenium 2.0 是把 WebDriver 加入到了这个家族中；简单用公式表示为：
+Selenium 2.0 = Selenium 1.0 + WebDriver
+需要强调的是，在 Selenium 2.0 中主推的是 WebDriver ，WebDriver 是 Selenium RC 的替代品，因
+为 Selenium 为了向下兼容性，所以 Selenium RC 并没有彻底抛弃，如果你使用 Selenium 开发一个新自
+动化测试项目，强列推荐使用 WebDriver 。那么 Selenium RC 与 webdriver 主要有什么区别呢？
+Selenium RC 在浏览器中运行 JavaScript 应用，使用浏览器内置的 JavaScript 翻译器来翻译和执行
+selenese 命令（selenese 是 Selenium 命令集合）。
+WebDriver 通过原生浏览器支持或者浏览器扩展直接控制浏览器。WebDriver 针对各个浏览器而开发，
+取代了嵌入到被测 Web 应用中的 JavaScript。与浏览器的紧密集成支持创建更高级的测试，避免了
+JavaScript 安全模型导致的限制。除了来自浏览器厂商的支持，WebDriver 还利用操作系统级的调用模拟
+用户输入。
+
+Selenium 与 WebDriver 原先属于两个不同的项目，WebDriver 的创建者 Simon Stewart 早在 2009 年
+八月的一份邮件中解释了项目合并的原因。
+Selenium 与 WebDriver 合并原因：
+为何把两个项目合并？部分原因是 WebDriver 解决了 Selenium 存在的缺点（比如，能够绕过 JS 沙
+箱。我们有出色的 API），部分原因是 Selenium 解决了 WebDriver 存在的问题（例如支持广泛的浏览
+器），部分原因是因为 Selenium 的主要贡献者和我都觉得合并项目是为用户提供最优秀框架的最佳途
+径。

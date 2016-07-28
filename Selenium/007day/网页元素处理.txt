@@ -1,0 +1,9 @@
+1,输入框
+send_keys()
+
+2,多层框架定位
+ switch_to.frame('FrameName')
+
+ 
+3,多层窗口定位
+ switch_to.window('WindowName')
