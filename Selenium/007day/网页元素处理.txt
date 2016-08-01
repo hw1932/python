@@ -7,3 +7,26 @@ send_keys()
  
 3,多层窗口定位
  switch_to.window('WindowName')
+ 
+4,cookies处理
+
+5，文件下载
+
+6，下拉列表
+
+7，层级定位
+
+8，元素等待
+
+9，滚动条
+
+10，上传文件
+
+11,页面元素等待
+
+12，元素基本操作
+
+13,浏览器操作
+
+A. switch_to.window.py  单步执行可以，整体执行会跳过第一个fram
+B. baidu_context.py python2下运行报错

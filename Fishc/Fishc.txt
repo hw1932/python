@@ -219,6 +219,7 @@ if __name__ == '__main__':
 while与else:如果while全部执行完毕，else会执行。如果while因为break终止,else不会执行（for也是这样）
 
 try与else
+try执行完后，当except不执行，执行else
 try:
 	int('abc')
 except ValueError as reason:
