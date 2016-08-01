@@ -1,0 +1,8 @@
+﻿1,webdriver 中比较常用的操作对象的方法
+ click 点击对象
+ send_keys 在对象上模拟按键输入
+ clear 清除对象的内容，如果可以的话
+ submit 清除对象的内容，如果可以的话
+ text 用于获取元素的文本信息
+	get_attribute获得元素属性
+
