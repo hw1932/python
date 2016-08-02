@@ -1,32 +1,40 @@
-1,输入框
-send_keys()
+1,浏览器操作
 
-2,多层框架定位
- switch_to.frame('FrameName')
-
+2,元素基本操作
  
-3,多层窗口定位
- switch_to.window('WindowName')
- 
-4,cookies处理
+3,鼠标事件
 
-5，文件下载
+4,键盘事件
 
-6，下拉列表
+5，页面元素等待
 
-7，层级定位
+6，多表单切换，switch_to.frame('FrameName')
 
-8，元素等待
+7，多窗口切换，switch_to.window('WindowName')
 
-9，滚动条
+8，层级定位
+
+9，警告框处理
 
 10，上传文件
 
-11,页面元素等待
+11，下载文件
 
-12，元素基本操作
+12，下拉框处理
 
-13,浏览器操作
+13,操作Cookie
+
+14，调用JS
+
+15，滚动条
+
+16,窗口截图------
+
+17，关闭窗口
+
+18，验证码处理------
+
+19，WebDriver原理--------
 
 A. switch_to.window.py  单步执行可以，整体执行会跳过第一个fram
 B. baidu_context.py python2下运行报错
