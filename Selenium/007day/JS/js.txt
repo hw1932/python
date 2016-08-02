@@ -1,0 +1,12 @@
+﻿1，语法
+ execute_script(script, *args)
+
+2，作用
+在当前窗口/框架 同步执行 javaScript
+
+3，语句解读
+script：JavaScript 的执行。
+*args：适用任何 JavaScript 脚本。
+
+4，具体应用举例：
+driver.execute_script（'document.title'）

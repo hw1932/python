@@ -1,0 +1,7 @@
+﻿在 WebDriver 中处理 JavaScript 所生成的 alert、confirm 以及 prompt 是很简单的。具体做法是使用
+switch_to_alert()方法定位到 alert/confirm/prompt。然后使用 text/accept/dismiss/send_keys 按需进行操做。
+
+ text 返回 alert/confirm/prompt 中的文字信息。
+ accept 点击确认按钮。
+ dismiss 点击取消按钮，如果有的话。
+ send_keys 输入值，这个 alert\confirm 没有对话框就不能用了，不然会报错。
