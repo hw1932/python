@@ -7,7 +7,7 @@ driver.get("http://www.youdao.com")
 driver.add_cookie({'name':'key-aaaaaaa', 'value':'value-bbbb'})
 #遍历 cookies 中的 name 和 value 信息打印，当然还有上面添加的信息
 for cookie in driver.get_cookies():
-print "%s -> %s" % (cookie['name'], cookie['value'])
+	print "%s -> %s" % (cookie['name'], cookie['value'])
 # 下面可以通过两种方式删除 cookie# 删除一个特定的 cookie
 driver.delete_cookie("CookieName")
 # 删除所有 cookie
