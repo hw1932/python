@@ -1,6 +1,6 @@
 1，Selenium官网：
 http://docs.seleniumhq.org/download/
-
+https://addons.mozilla.org/en-US/firefox/addon/selenium-ide/
 2，安装Firefox Selenium IDE
 
 3，编写、录制第一个脚本
