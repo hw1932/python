@@ -2,22 +2,27 @@
 from selenium import webdriver
 import time
 driver = webdriver.Firefox()
-driver.get("http://www.baidu.com")
+driver.get("https://www.baidu.com")
 
 #id = cp 元素的文本信息
 cp = driver.find_element_by_id("cp").text
-print (cp.encode('utf-8').decode('gbk') #打印信息
+print (cp) #打印信息
+
+driver.find_element_by_id('kw').send_keys("python")
 time.sleep(3)
-driver.find_element_by_id("kw").send_keys("python")
-time.sleep(3)
+
 driver.find_element_by_id("kw").clear()
 driver.find_element_by_id("kw").send_keys("selenium")
 time.sleep(2)
+
 #通过 submit() 来操作
-driver.find_element_by_id("su").submit()
+driver.find_element_by_id("kw").submit()
 time.sleep(3)
+
+#get_attribute获取属性值
 select = driver.find_element_by_name("tj_trnuomi").get_attribute('href')
 print ('the value is -->'+select)
+
 time.sleep(3)
 driver.quit()
 
