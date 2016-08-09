@@ -1,5 +1,6 @@
 1,下载、安装浏览器和驱动
 https://code.google.com/p/Selenium/downloads/list
+http://chromedriver.storage.googleapis.com/index.html?path=2.7/
 可以将 chromedriver.exe 放到 C:\Python27\目录下
 下载 IEDriverServer_Win32_x.xx.zip,将解压得到 IEDriverServer.exe，同样放置到C:\Python27\目录下
 
