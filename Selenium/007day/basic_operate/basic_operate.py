@@ -5,7 +5,7 @@ driver = webdriver.Firefox()
 driver.get("https://www.baidu.com")
 
 #id = cp 元素的文本信息
-cp = driver.find_element_by_id("cp").text
+cp = driver.find_element_by_id("cp")
 print (cp) #打印信息
 
 driver.find_element_by_id('kw').send_keys("python")
