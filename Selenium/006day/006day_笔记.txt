@@ -217,7 +217,7 @@ find_element_by_css_selector("input[type='submit']")
 在 CSS 当中也可以使用元素的任意属性，只要这些属性可以唯一的标识这个元素。
 
 5) 组合定位：
-我们当然可以把上面的定位策略组合起来使用，这样就大大加强了元素的唯一性。
+我们当然可以把上面的定位策略组合起来使用，这样就大大加强了元素的唯一性。 
 find_element_by_css_selector("span.bg s_ipt_wr>input.s_ipt")
 find_element_by_css_selector("span.bg s_btn_wr>input#su")
 有一个父元素，它的标签名叫 span，它有一个 class 属性值叫 bg s_ipt_wr，它有一个子元素，标签名
@@ -231,7 +231,7 @@ find_element_by_css_selector("span.bg s_btn_wr>input#su")
 定位方式 		XPath 								CSS
 标签 			//div 								div
 By id 			//div[@id='eleid'] 					div#eleid
-By class 		//div[@class='eleclass'] 			div#eleid
+By class 		//div[@class='eleclass'] 			div#eleid 
 By 属性 		//div[@title='Move mouse here']		div[title=Move mouse here]
 													div[title^=Move]
 													div[title$=here]
@@ -244,7 +244,7 @@ By 属性 		//div[@title='Move mouse here']		div[title=Move mouse here]
 有时需要使用定位方法，在具体通过哪种定位方式（id 或 name）根据实际场景而定位，By 就可以设
 置定位策略。
 find_element()方法只用于定位元素。它需要两个参数，第一个参数是定位方式，这个由 By 提供；另
-第二个参数是定位的值。在使用 By 时需要将 By 类导入。
+第二个参数是定位的值。在使用 By 时需要将 by 类导入。
 from selenium.webdriver.common.by import By	
 
 find_element(By.ID,"kw")
