@@ -37,7 +37,7 @@ Selenium RC Ê¹ÓÃ·Ö Client Libraries ºÍ Selenium Server£¬Client Libraries ¿âÖ÷ÒªÖ
 Selenium Server ¸ºÔğ¿ØÖÆä¯ÀÀÆ÷ĞĞÎª£¬×ÜµÄÀ´Ëµ£¬Selenium Server Ö÷Òª°üÀ¨ 3 ¸ö²¿·Ö£ºLauncher¡¢
 Http Proxy¡¢ Core¡£ ÆäÖĞ Selenium Core ÊÇ±» Selenium Server Ç¶Èëµ½ä¯ÀÀÆ÷Ò³ÃæÖĞµÄ¡£ ÆäÊµ Selenium Core
 ¾ÍÊÇÒ»¶Ñ JS º¯ÊıµÄ¼¯ºÏ£¬¾ÍÊÇÍ¨¹ıÕâĞ© JS º¯Êı£¬ÎÒÃÇ²Å¿ÉÒÔÊµÏÖÓÃ³ÌĞò¶Ôä¯ÀÀÆ÷½øĞĞ²Ù×÷¡£Launcher ÓÃ
-ÓÚÆô¶¯ä¯ÀÀÆ÷£¬°Ñ selnium Core ¼ÓÔØµ½ä¯ÀÀÆ÷Ò³Ãæµ±ÖĞ£¬²¢°Ñä¯ÀÀÆ÷µÄ´úÀíÉèÖÃÎª Selenium Server µÄ
+ÓÚÆô¶¯ä¯ÀÀÆ÷ £¬°Ñ selnium Core ¼ÓÔØµ½ä¯ÀÀÆ÷Ò³Ãæµ±ÖĞ£¬²¢°Ñä¯ÀÀÆ÷µÄ´úÀíÉèÖÃÎª Selenium Server µÄ
 Http Proxy¡£
 
 7£¬Selenium 2.0

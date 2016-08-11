@@ -178,7 +178,7 @@ CSS 选择器的常见语法：
 * 							* 					选择所有元素
 element 					p 					元素所有<p>元素
 element > element 			div > input 		选择父元素为 <div> 元素的所有 <input> 元素
-element + element 			div + input 		选择紧接在 <div> 元素之后的所有 <p> 元素。
+element + element 			div + input 		选择紧接在 <div> 元素之后的所有 <input> 元素。
 [attribute=value] 			[target=_blank] 	选择 target="_blank" 的所有元素。
 
 以百度输入框和搜索按钮为例
