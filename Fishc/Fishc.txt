@@ -657,5 +657,20 @@ class Mytimer2():
                 self.prompt += (str(self.lasted[index]) + self.unit[index])
             elif self.lasted[index]>0:
                 self.prompt += (str(self.lasted[index]) + self.unit[index])
-				
+
+
+
+四十五、属性访问
+class C:
+	def __init__(self):
+		self.x = 'X-man'
+
+>>> = C()
+>>>c.x
+>>>getattr(c,'x','木有这个属性!')
+>>>getattr(c,'y','木有这个属性!')
+
+class C:
+	def __init__(self, size=10):
+		self.size = size
 				
