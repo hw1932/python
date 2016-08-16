@@ -28,10 +28,10 @@ except Exception as e:
 
 #跳转到网盘
 #WebDriverWait(driver,2,0.5).until(EC.presence_of_element_located((By.CSS_SELECTOR,"#aside > ul.app-entry > li:nth-child(1) > a"))).click()
-driver.implicitly_wait(2)
+
 #刷新浏览器
 driver.refresh()
-driver.implicitly_wait(2)
+
 #定位元素的源位置
 #element = WebDriverWait(driver,2,0.5).until(EC.presence_of_element_located((By.CSS_SELECTOR,"#aside > ul.app-entry > li:nth-child(1) > a")))
 element = driver.find_element_by_css_selector("#layoutMain > div.module-list > div.list-view-container > div > div.list-view > dd.g-clearfix.list-view-item.open-enable.hover-item > div.file-name > div.text > a")
@@ -41,6 +41,6 @@ target = driver.find_element_by_css_selector("#layoutMain > div.module-list > di
 ActionChains(driver).drag_and_drop(element,target).perform()
 
 #观察页面变化
-driver.implicitly_wait(2)
+
 #关闭浏览器退出
 driver.close()

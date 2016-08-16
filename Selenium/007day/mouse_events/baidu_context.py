@@ -32,7 +32,6 @@ time.sleep(15)
 #跳转到网盘
 #WebDriverWait(driver,2,0.5).until(EC.presence_of_element_located((By.CSS_SELECTOR,"#aside > ul.app-entry > li:nth-child(1) > a"))).click()
 #刷新浏览器
-driver.implicitly_wait(10)
 driver.refresh()
 #定位到要右击的元素
 right_click = driver.find_element_by_xpath('//*[@id="layoutMain"]/div[2]/div[3]/div/div[1]/dd[3]/span')
@@ -40,7 +39,7 @@ right_click = driver.find_element_by_xpath('//*[@id="layoutMain"]/div[2]/div[3]/
 #对定位到的元素执行鼠标右键操作
 ActionChains(driver).context_click(right_click).perform()
 print('观察页面变化')
-driver.implicitly_wait(10)
+time.sleep(10)
 #关闭浏览器退出
 driver.close()
 
