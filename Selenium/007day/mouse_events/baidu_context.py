@@ -9,25 +9,25 @@ from selenium.webdriver.support import expected_conditions as EC
 from selenium.webdriver.support.ui import WebDriverWait
 from selenium.webdriver.common.by import By
 driver = webdriver.Chrome()
-driver.get("https://yun.baidu.com")
+driver.get("https://pan.baidu.com")
 driver.implicitly_wait(10)
 driver.refresh()
 #登录
 driver.find_element_by_id('TANGRAM__PSP_4__userName').send_keys('3000huangwei')
 driver.find_element_by_id('TANGRAM__PSP_4__password').send_keys('a123123')
 driver.find_element_by_id('TANGRAM__PSP_4__submit').click()
-time.sleep(2)
+time.sleep(15)
 #判断是否需要验证码
-try:
-    verifyCode = WebDriverWait(driver,2,0.5).until(EC.presence_of_element_located((By.ID,"TANGRAM__PSP_4__verifyCode")))
-    if not verifyCode:
-        pass
-    else:
-        codeinput = input(u'请输入验证码：')
-        verifyCode.send_keys(codeinput)
-        driver.find_element_by_id('TANGRAM__PSP_4__submit').click()
-except Exception as e:
-     pass
+# try:
+#     verifyCode = WebDriverWait(driver,2,0.5).until(EC.presence_of_element_located((By.ID,"TANGRAM__PSP_4__verifyCode")))
+#     if not verifyCode:
+#         pass
+#     else:
+#         codeinput = input(u'请输入验证码：')
+#         verifyCode.send_keys(codeinput)
+#         driver.find_element_by_id('TANGRAM__PSP_4__submit').click()
+# except Exception as e:
+#      pass
 
 #跳转到网盘
 #WebDriverWait(driver,2,0.5).until(EC.presence_of_element_located((By.CSS_SELECTOR,"#aside > ul.app-entry > li:nth-child(1) > a"))).click()
@@ -39,7 +39,7 @@ right_click = driver.find_element_by_xpath('//*[@id="layoutMain"]/div[2]/div[3]/
 
 #对定位到的元素执行鼠标右键操作
 ActionChains(driver).context_click(right_click).perform()
-#观察页面变化
+print('观察页面变化')
 driver.implicitly_wait(10)
 #关闭浏览器退出
 driver.close()

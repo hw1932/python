@@ -8,10 +8,9 @@ WebDriver 提供了两种类型的等待：显式等待和隐式等待。
 它是由 webdirver 提供的等待方法。在设置时间内，默认每隔一段时间检测一次当前页面元素是否存
 在，如果超过设置时间检测不到则抛出异常。具体格式如下：
 WebDriverWait(driver, timeout, poll_frequency=0.5, ignored_exceptions=None)
-
 driver - WebDriver 的驱动程序（Ie， Firefox，Chrome 等）
 timeout - 最长超时时间，默认以秒为单位
-poll_frequency - 休眠时间的间隔（步长）时间，默认为 0.5 秒
+poll_frequency - 轮询时间的间隔（步长）时间，默认为 0.5 秒
 ignored_exceptions - 超时后的异常信息，默认情况下抛 NoSuchElementException 异常。
 
 until()
