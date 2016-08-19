@@ -32,7 +32,7 @@
 				//拖动开始时
 				li.ondragstart = function(ev) {
 					console.log('拖动开始')
-					ev.target.id = 'draging'
+					//ev.target.id = 'draging'
 					
 					ev.dataTransfer.effectAllowed = 'move'
 					ev.dataTransfer.setDragImage(ev.target, -30, -10)
