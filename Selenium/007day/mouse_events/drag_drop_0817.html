@@ -18,11 +18,11 @@
 	</head>
 	<body>
 		<ol>
-			<li id='1' draggable="true">1 Python</li>
-			<li id='2' draggable="true">2 Selenium</li>
-			<li id='3' draggable="true">3 JavaScript</li>
-			<li id='4' draggable="true">4 Webdriver</li>
-			<li id='5' draggable="true">5 UTF-8</li>
+			<li name='1' draggable="true">1 Python</li>
+			<li name='2' draggable="true">2 Selenium</li>
+			<li name='3' draggable="true">3 JavaScript</li>
+			<li name='4' draggable="true">4 Webdriver</li>
+			<li name='5' draggable="true">5 UTF-8</li>
 		</ol>
 		<script>
 			var lis = document.getElementsByTagName('li')
@@ -32,7 +32,7 @@
 				//拖动开始时
 				li.ondragstart = function(ev) {
 					console.log('拖动开始')
-					//ev.target.id = 'draging'
+					ev.target.id = 'draging'
 					
 					ev.dataTransfer.effectAllowed = 'move'
 					ev.dataTransfer.setDragImage(ev.target, -30, -10)
