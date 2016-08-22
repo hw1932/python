@@ -5,91 +5,40 @@
 		<meta name="author" content="hw">
 		<title>拖动</title>
 		<style>
-
-			li{
-				cursor: move;
-				background-color: red;
-				color: black;
-				margin: 5px;
-				font-size: 40px;
-				padding: 10px;
-			}
+            #Source { 
+            width:150px; 
+            height:150px; 
+            padding:0.5em; 
+            border:1px solid;
+            background: blue; 
+            } 
+            #Target { 
+            width:150px; 
+            height:150px; 
+            padding:0.5em; 
+            border:1px solid; 
+            background: red;
+            } 
+		
 		</style>
 	</head>
 	<body>
-		<ol>
-			<li name='1' draggable="true">1 Python</li>
-			<li name='2' draggable="true">2 Selenium</li>
-			<li name='3' draggable="true">3 JavaScript</li>
-			<li name='4' draggable="true">4 Webdriver</li>
-			<li name='5' draggable="true">5 UTF-8</li>
-		</ol>
-		<script>
-			var lis = document.getElementsByTagName('li')
-			
-			for (var i = 0; i < lis.length; i++) {
-				var li = lis[i]
-				//拖动开始时
-				li.ondragstart = function(ev) {
-					console.log('拖动开始')
-					ev.target.id = 'draging'
-					
-					ev.dataTransfer.effectAllowed = 'move'
-					ev.dataTransfer.setDragImage(ev.target, -30, -10)
-					ev.dataTransfer.setData('li', ev.target.id)
-				}
-				//拖动的对象进入标签范围
-				li.ondragenter = function(ev){
-					console.log('进入')
-					ev.preventDefault()
-					
-				}
-				//拖动的对象离开标签范围
-				li.ondragleave = function(ev){
-					console.log('离开')
-					ev.preventDefault()
-					ev.currentTarget.style.backgroundColor = ''
-				}
-				//拖动的对象在标签之上
-				li.ondragover = function(ev){
-					console.log('在上面')
-					ev.currentTarget.dropEffect = 'move'
-					ev.preventDefault()
-					ev.currentTarget.style.backgroundColor = 'blue'
-				}
-				//拖动结束
-				li.ondragend = function(ev){
-					console.log('结束')
-					ev.preventDefault()
-					
-					var id = ev.dataTransfer.getData('li')
-					var li = document.getElementById(id)
-					
-					li.id = ''
-				}
-				//拖动时，鼠标移动时就会触发
-				li.ondrag = function(ev){
-					console.log('拖动')
-					ev.preventDefault()
-				}
-				//释放时
-				li.ondrop = function(ev){
-					console.log('释放')
-					ev.preventDefault()
-					ev.stopImmediatePropagation()
-					
-					var id = ev.dataTransfer.getData('li')
-					var li = document.getElementById(id)
-					
-					ev.currentTarget.style.backgroundColor = ''
-					
-					if (li == ev.currentTarget) return
-					
-					var ol = li.parentElement
-					ol.removeChild(li)
-					ol.insertBefore(li, ev.currentTarget)
-				}
-			}
-		</script>
-	</body>
+		<div id="Source"> 
+            <p>Source</p> 
+        </div> 
+        <div id="Target">
+            <p>Target</p>
+        </div>
+        <script src="http://code.jquery.com/jquery-1.9.1.js"></script> 
+        <script src="http://code.jquery.com/ui/1.10.3/jquery-ui.js"></script> 
+        <script> 
+        $(function() { 
+        $('#Source').draggable(); 
+        });
+        $(function() { 
+        $('#Target').draggable(); 
+        });
+
+        </script> 
+    </body>
 </html>
